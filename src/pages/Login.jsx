@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../microcomponents/textField/Input";
 import Button from "../microcomponents/button/Button";
 import { OtpInputComponent } from "@syncfusion/ej2-react-inputs";
 import { LoginFetching } from "../services/LoginFetching";
+import toast, { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { SetToken } from "../app/features/authSlice/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const token = useSelector((state) => state.auth.token);
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
     smscode: "",
   });
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleInputValueChange = (e) => {
     const { value } = e.target;
@@ -26,9 +34,21 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userInfo) {
-      LoginFetching(userInfo);
+      LoginFetching(userInfo).then(({ status, data }) => {
+        if (status === 200) {
+          toast.success(data.message);
+          dispatch(SetToken(data.traceMessage.token));
+          navigate("/details");
+        }
+      });
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/details");
+    }
+  }, [token]);
 
   return (
     <div className="flex items-center w-full h-screen justify-center">
@@ -64,6 +84,7 @@ const Login = () => {
           />
         </form>
       </div>
+      <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );
 };
