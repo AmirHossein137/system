@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
+
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Vazirmatn", serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  /* direction: rtl; */
+}
+
+input,
+button{
+  font-family: "Vazirmatn", serif !important;
+}
+
+.e-float-text {
+  text-align: right;
+}
