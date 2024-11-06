@@ -12,8 +12,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "@syncfusion/ej2-react-buttons": "^27.1.58",
+    "@syncfusion/ej2-react-dropdowns": "^27.1.58",
     "@syncfusion/ej2-react-grids": "^27.1.58",
     "@syncfusion/ej2-react-inputs": "^27.1.58",
+    "@syncfusion/ej2-react-popups": "^27.1.58",
     "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

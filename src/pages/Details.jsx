@@ -3,6 +3,7 @@ import { CoreServiceFetching } from "../services/LoginFetching";
 import { useDispatch } from "react-redux";
 import { setData } from "../app/features/data/DataGridSlice";
 import DataGrid from "../components/module/DataGrid";
+import ModalInfo from "../components/module/ModalInfo";
 
 const Details = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,10 @@ const Details = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center">
+      <div className="mb-4">
+        <ModalInfo />
+      </div>
       <DataGrid />
     </div>
   );

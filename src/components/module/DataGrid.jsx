@@ -5,7 +5,6 @@ import {
 } from "@syncfusion/ej2-react-grids";
 import { Edit, Inject, Toolbar } from "@syncfusion/ej2-react-grids";
 import { useSelector } from "react-redux";
-import { DataInfo } from "../../services/LoginFetching";
 function DataGrid() {
   const DGrid = useSelector((state) => state.data.data);
   console.log(DGrid);
@@ -34,10 +33,6 @@ function DataGrid() {
   }
 
 
-  const fetching = () => {
-    DataInfo()
-  }
-
   const pageSettings = { pageSize: DGrid?.pageSize };
   return (
     <GridComponent
@@ -46,7 +41,6 @@ function DataGrid() {
       pageSettings={pageSettings}
       editSettings={editOptions}
       toolbar={toolbarOptions}
-      onClick={fetching}
     >
       <ColumnsDirective>
         {DGrid?.columnHeader?.map((item, index) => (
